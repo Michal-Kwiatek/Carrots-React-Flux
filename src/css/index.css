@@ -1,0 +1,83 @@
+/* GLOBAL */
+.app__title {
+    text-align: center;
+    padding: 5px;
+    display: table;
+    margin: 10px auto 50px auto;
+    border-bottom: 1px solid black;
+}
+    
+.card {
+    min-width: 350px;
+}
+
+.createAndEdit {
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+@media (max-width: 420px) {
+    .card {
+        width: 98vw;
+    }
+
+    .edit__card  {
+        margin-top: 20px;
+    }
+}
+
+/* CREATE */
+.createProfile {
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.createProfile .formRow {
+    text-align: left;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between !important;
+}
+
+.createProfile .formRow  input {
+    margin-left: 5px;
+    padding-left: 5px;
+}
+
+#carrotsCount {
+    margin-bottom: 25px;
+    width: 54%;
+}
+
+
+
+/* EDIT */
+.edit__card{
+    text-align: center;
+}
+
+.edit__card select {
+    min-width: 90px;
+}
+
+.edit__card p {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+
+
+/* TABLE */
+table, th {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    margin-top: 50px;
+}
