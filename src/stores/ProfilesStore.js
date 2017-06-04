@@ -5,6 +5,8 @@ class ProfilesStore extends EventEmitter {
   constructor() {
     super();
 
+    this.formValid = false;
+
     this.profiles = [
       {
         id: 543534,
@@ -31,6 +33,29 @@ class ProfilesStore extends EventEmitter {
     this.emit("change");
   }
 
+  validateForm(data) {
+    let nameOk = this.validateName(data.rabbitName);
+    let countOk = this.validateCount(data.carrotsCount);
+
+    this.formValid = nameOk && countOk;
+
+    this.emit("validated");
+  }
+
+  validateName(name) {
+    let val = name.trim();
+    return val.length >= 3;
+  }
+
+  validateCount(count) {
+    let val = parseFloat(count);
+    return Number.isInteger(val) && val >= 0 && val <= 10000;
+  }
+
+  isFormValid() {
+    return this.formValid;
+  }
+
   getAll() {
     return this.profiles;
   }
@@ -41,6 +66,10 @@ class ProfilesStore extends EventEmitter {
         this.createProfile(action.name, action.carrotsCount)
         break;
 
+      case "VALIDATE_FORM":
+        this.validateForm(action.data)
+        break;
+
       default:
         break;
     }
@@ -49,7 +78,5 @@ class ProfilesStore extends EventEmitter {
 
 const profilesStore = new ProfilesStore();
 Dispatcher.register(profilesStore.handleActions.bind(profilesStore));
-
-window.di = Dispatcher;
 
 export default profilesStore;
