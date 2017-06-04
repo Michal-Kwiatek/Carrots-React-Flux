@@ -3,24 +3,28 @@ import React from 'react';
 import ProfilesStore from '../stores/ProfilesStore';
 import TableRow from './TableRow';
 
+import sort from '../utils/sorting_couting';
+
 class TableProfiles extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      profiles: ProfilesStore.getAll()
+      profiles: sort(ProfilesStore.getAll())
     }
   }
 
   componentWillMount() {
-    ProfilesStore.on("change", () => {
-
-      this.setState({ 
-        profiles: ProfilesStore.getAll()
-      });
-    })
+    ProfilesStore.on("change", this.sortAndUpdate.bind(this))
   }
 
+  sortAndUpdate() {
+    const sortedProfiles = sort(ProfilesStore.getAll())
+
+      this.setState({ 
+        profiles: sortedProfiles
+      });
+  }
 
   render() {
     const profiles = this.state.profiles.map( (profile, i) => {

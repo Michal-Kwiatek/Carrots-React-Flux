@@ -34,10 +34,10 @@ class ProfilesStore extends EventEmitter {
   }
 
   validateForm(data) {
-    let nameOk = this.validateName(data.rabbitName);
-    let countOk = this.validateCount(data.carrotsCount);
+    let nameValid = this.validateName(data.rabbitName);
+    let countValid = this.validateCount(data.carrotsCount);
 
-    this.formValid = nameOk && countOk;
+    this.formValid = nameValid && countValid;
 
     this.emit("validated");
   }

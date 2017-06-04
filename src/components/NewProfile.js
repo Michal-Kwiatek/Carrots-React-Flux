@@ -36,6 +36,8 @@ class NewProfile extends React.Component {
     const { name, carrotsCount } = this.refs;
     
     profileActions.createProfile(name.value, carrotsCount.value);
+    
+    alert(`Created new rabbit: ${name.value} with ${carrotsCount.value} carrots`)
     e.target.reset();
   }
 

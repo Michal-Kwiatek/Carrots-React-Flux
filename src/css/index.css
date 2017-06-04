@@ -21,8 +21,17 @@
 }
 
 @media (max-width: 420px) {
-    .card {
+    .container{
         width: 98vw;
+        padding: 0px;
+    }
+    
+    .row {
+        margin: 0;
+    }
+
+    .card {
+        min-width: 94vw;
     }
 
     .edit__card  {
@@ -73,11 +82,11 @@
 
 
 /* TABLE */
-table, th {
+.table, th {
     text-align: center;
 }
 
-table {
+.table {
     width: 100%;
     margin-top: 50px;
 }

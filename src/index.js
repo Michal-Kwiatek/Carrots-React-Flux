@@ -20,8 +20,8 @@ class App extends React.Component {
         <div className="row createAndEdit">
           <NewProfile />
           <EditProfile />
-          <TableProfiles />
         </div>
+        <TableProfiles />
       </div>
     )
   }
