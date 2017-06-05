@@ -13,7 +13,7 @@ class NewProfile extends React.Component {
   }
 
   componentWillMount() {
-    ProfilesStore.on("validated", () => {
+    ProfilesStore.on("validChange", () => {
 
       this.setState({ 
         formValid: ProfilesStore.isFormValid()

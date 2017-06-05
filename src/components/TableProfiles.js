@@ -15,7 +15,7 @@ class TableProfiles extends React.Component {
   }
 
   componentWillMount() {
-    ProfilesStore.on("change", this.sortAndUpdate.bind(this))
+    ProfilesStore.on("profilesUpdate", this.sortAndUpdate.bind(this))
   }
 
   sortAndUpdate() {

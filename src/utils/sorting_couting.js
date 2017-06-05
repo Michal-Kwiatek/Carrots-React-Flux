@@ -1,3 +1,5 @@
+/* eslint eqeqeq: 0 */
+
 export default function sortCount(profiles) {
 
   let countTable = [];
@@ -14,7 +16,7 @@ export default function sortCount(profiles) {
     if (countTable[j] !== undefined) {
       for (let k = 1; k <= countTable[j]; k++) {        // Sorting, pushing into sorted Array
         for (let profile of profiles) {
-          if (profile.carrotsCount == j && k == 1) {
+          if (profile.carrotsCount == j && k == 1) {  
             sortedTable.push(profile)
           }
         }

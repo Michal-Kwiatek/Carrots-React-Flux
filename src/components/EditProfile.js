@@ -1,25 +1,48 @@
 import React from 'react';
 
+import EditProfileSelected from './EditProfileSelected';
+import ProfilesStore from '../stores/ProfilesStore';
+
 class EditProfile extends React.Component {
+  constructor() {
+    super();
+
+    this.state = this.updateState();
+  }
+
+  updateState() {
+    const newState = {
+      profiles: ProfilesStore.getAll(),
+      selectedProfile: ProfilesStore.getSelected()
+    }
+
+    return { ...newState };
+  }
+
+  componentWillMount() {
+    ProfilesStore.on("profilesUpdate", () => {
+      const newState = this.updateState();              // IMMUTABLE
+
+      this.setState(newState)
+    })
+
+    ProfilesStore.on("selectedChange", () => {
+      this.setState({ ...this.state, selectedProfile: ProfilesStore.getSelected() });    // IMMUTABLE
+    })
+  }
 
   render() {
+    let body;
+
+    if (this.state.profiles.length && this.state.selectedProfile) {
+      body = <EditProfileSelected {...this.state} />;
+    } else {
+      body = <p>No profiles available to edit</p>;
+    }
+
     return (
       <div className="edit__card card">
-        <h3 className="card-header">
-          Edit
-      </h3>
-        <div className="card-block">
-          <label>Profile: </label>
-          <select name="profiles" id="selectProfile" >
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select >
-
-          <p>Carrots count: 5</p>
-          <button className="btn btn-danger" > Delete profile</button >
-
-        </div >
+        {body}
       </div >
     )
   }
