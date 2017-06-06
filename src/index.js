@@ -40,23 +40,3 @@ class App extends React.Component {
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-
-/*render() {
-    return (
-      <Router>
-
-        <div className="container">
-          <h1 className="app__title">
-            Carrots - Admin Panel
-        </h1>
-
-          <div className="row createAndEdit">
-            <NewProfile />
-            <EditProfile />
-          </div>
-          <TableProfiles />
-        </div>
-      </Router>
-    )
-  }*/
