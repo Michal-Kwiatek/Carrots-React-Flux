@@ -11,6 +11,10 @@
     min-width: 350px;
 }
 
+.card-header {
+    color: #FFFFFF;
+}
+
 .createAndEdit {
     justify-content: space-around;
     align-items: flex-start;
@@ -79,7 +83,17 @@
     margin-bottom: 25px;
 }
 
+.countButton {
+    width: 45px;
+    padding: 4px;
+    margin: 2px;
+}
 
+.buttonGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
 
 /* TABLE */
 .table, th {

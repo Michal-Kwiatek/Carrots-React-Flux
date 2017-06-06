@@ -1,22 +1,23 @@
 import React from 'react';
 
-import ProfilesStore from '../stores/ProfilesStore';
+import ValidationStore from '../stores/ValidationStore';
 import * as profileActions from '../actions/ProfilesActions';
+import * as validationActions from '../actions/ValidationActions';
 
 class NewProfile extends React.Component {
   constructor(){
     super();
 
     this.state = {
-      formValid: ProfilesStore.isFormValid()
+      formValid: ValidationStore.isFormValid()
     }
   }
 
   componentWillMount() {
-    ProfilesStore.on("validChange", () => {
+    ValidationStore.on("stateChange", () => {
 
       this.setState({ 
-        formValid: ProfilesStore.isFormValid()
+        formValid: ValidationStore.isFormValid()
       });
     })
   }
@@ -28,7 +29,7 @@ class NewProfile extends React.Component {
       carrotsCount: carrotsCount.value
     }
 
-    profileActions.validateForm(inputsValues);
+    validationActions.validateForm(inputsValues);
   }
 
   handleSubmit(e) {
@@ -36,7 +37,8 @@ class NewProfile extends React.Component {
     const { name, carrotsCount } = this.refs;
     
     profileActions.createProfile(name.value, carrotsCount.value);
-    
+    validationActions.changeState(false);
+
     alert(`Created new rabbit: ${name.value} with ${carrotsCount.value} carrots`)
     e.target.reset();
   }
@@ -44,7 +46,7 @@ class NewProfile extends React.Component {
   render() {
     return (
       <div className="card createProfile">
-        <h3 className="card-header">Create new profile</h3>
+        <h3 className="card-header card-success">Create new profile</h3>
         <form className="card-block" onChange = {()=> this.handleFormChange() } onSubmit={ e => this.handleSubmit(e) }>
           <div className="formRow">
             <label>Rabbit name: </label>

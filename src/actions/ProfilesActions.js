@@ -1,13 +1,6 @@
 import dispatcher from '../dispatcher';
 
 
-export function validateForm(data) {
-    dispatcher.dispatch({
-        type: "VALIDATE_FORM",
-        data
-    })
-}
-
 export function createProfile(name, carrotsCount) {
     dispatcher.dispatch({
         type: "CREATE_PROFILE",
@@ -26,5 +19,19 @@ export function changeSelected(id) {
 export function deleteSelected() {
     dispatcher.dispatch({
         type: "DELETE_SELECTED_PROFILE"
+    })
+}
+
+export function addCarrots(count) {
+    dispatcher.dispatch({
+        type: "ADD_CARROTS",
+        count
+    })
+}
+
+export function subtractCarrots(count) {
+    dispatcher.dispatch({
+        type: "SUBTRACT_CARROTS",
+        count
     })
 }

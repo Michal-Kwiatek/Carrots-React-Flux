@@ -1,39 +1,39 @@
 import React from 'react';
 
+import ProfilesSelector from './ProfilesSelector';
+import ButtonsGroup from './ButtonsGroup';
+
 import * as profileActions from '../actions/ProfilesActions';
-
-import EditProfileOption from './EditProfileOption';
-
 
 class EditProfileSelected extends React.Component {
 
-  handleSelectedChange(e) {             
+  handleSelectedChange(e) {         
     profileActions.changeSelected(e.target.value);
   }
 
   handleDeleteProfile() {
-    profileActions.deleteSelected();
+    let sure = window.confirm(`Are you sure that you want to remove ${this.props.selectedProfile.name}`);      // eslint-disable-line no-alert
+
+    if(sure) {
+      profileActions.deleteSelected();
+    }
   }
 
   render() {
-    const { id, name, carrotsCount } = this.props.selectedProfile;
-    const options = this.props.profiles.map(profile => {
-      return <EditProfileOption key={profile.id}  {...profile} />;
-    })
-
+    const { name, carrotsCount } = this.props.selectedProfile;
+ 
     return (
       <div>
-        <h3 className="card-header">
+        <h3 className="card-header card-warning">
           Editing: {name}
         </h3>
         <div className="card-block">
           <label>Profile: </label>
-          <select name="profiles" id="selectProfile"
-            value={id}
-            onChange={e => this.handleSelectedChange(e)} >
-            {options}
-          </select >
+          <ProfilesSelector 
+          selectedProfile={ this.props.selectedProfile }
+          profiles={ this.props.profiles }/>
           <p>Carrots count: {carrotsCount}</p>
+          <ButtonsGroup />
           <button onClick={()=> this.handleDeleteProfile() } className="btn btn-danger"> Delete profile</button >
         </div >
       </div >
