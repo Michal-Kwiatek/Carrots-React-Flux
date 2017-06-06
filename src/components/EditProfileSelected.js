@@ -12,7 +12,8 @@ class EditProfileSelected extends React.Component {
   }
 
   handleDeleteProfile() {
-    let sure = window.confirm(`Are you sure that you want to remove ${this.props.selectedProfile.name}`);      // eslint-disable-line no-alert
+    let question = `Are you sure that you want to remove ${this.props.selectedProfile.name}`;
+    let sure = window.confirm(question);      // eslint-disable-line no-alert
 
     if(sure) {
       profileActions.deleteSelected();
@@ -24,7 +25,7 @@ class EditProfileSelected extends React.Component {
  
     return (
       <div>
-        <h3 className="card-header card-warning">
+        <h3 className="card-header card-info">
           Editing: {name}
         </h3>
         <div className="card-block">

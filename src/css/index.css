@@ -3,7 +3,7 @@
     text-align: center;
     padding: 5px;
     display: table;
-    margin: 10px auto 50px auto;
+    margin: 10px auto 35px auto;
     border-bottom: 1px solid black;
 }
     
@@ -24,23 +24,48 @@
     cursor: pointer;
 }
 
-@media (max-width: 420px) {
-    .container{
-        width: 98vw;
-        padding: 0px;
-    }
-    
-    .row {
-        margin: 0;
-    }
+a:link, a:active, a:hover, a {
+    text-decoration: none;
+}
 
-    .card {
-        min-width: 94vw;
-    }
+/* NAVIGATION */
+.nav {
+    max-width: 385px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-    .edit__card  {
-        margin-top: 20px;
-    }
+.nav-item {
+    width: 40%;
+    text-align: center;
+}
+
+.nav-item a:active,
+.nav-item a.active:hover,
+.nav-item a:focus {
+    color: #FFFFFF;
+}
+
+.nav-item a:hover{
+    color: inherit;
+}
+
+.active {
+    display: block;
+    color: #FFFFFF;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.navNew.active {
+    background-color: #28B62C;
+}
+
+.navEdit.active {
+    background-color: #75CAEB;
 }
 
 /* CREATE */
@@ -76,6 +101,7 @@
 
 .edit__card select {
     min-width: 90px;
+    margin-left: 10px;
 }
 
 .edit__card p {
@@ -84,15 +110,19 @@
 }
 
 .countButton {
-    width: 45px;
-    padding: 4px;
-    margin: 2px;
+    width: 47px;
+    padding: 10px;
+    margin: 0px 1px;
 }
 
 .buttonGroup {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
+}
+
+.buttonRow {
+    margin-bottom: 4px;
 }
 
 /* TABLE */
@@ -103,4 +133,31 @@
 .table {
     width: 100%;
     margin-top: 50px;
+}
+
+
+/* MEDIA QUERIES */
+
+
+@media (max-width: 420px) {
+    .container{
+        width: 98vw;
+        padding: 0px;
+    }
+    
+    .row {
+        margin: 0;
+    }
+
+    .card {
+        min-width: 94vw;
+    }
+
+    .edit__card  {
+        margin-top: 20px;
+    }
+
+    .countButton {
+        width: 43px;
+    }
 }

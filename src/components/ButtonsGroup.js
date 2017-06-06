@@ -20,7 +20,7 @@ class ButtonsGroup extends React.Component {
   }
 
   generateButtons(operation) {
-    let classes = 'countButton';
+    let classes = 'btn countButton';
     let func;
 
     if(operation === '+') {
@@ -46,8 +46,8 @@ class ButtonsGroup extends React.Component {
 
     return (
       <div className="buttonGroup">
-        <div>{plusButtons}</div>
-        <div>{minusButtons}</div>
+        <div className="buttonRow">{plusButtons}</div>
+        <div className="buttonRow">{minusButtons}</div>
       </div>
     )
   }

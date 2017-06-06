@@ -8,6 +8,7 @@ import sort from '../utils/sorting_couting';
 class TableProfiles extends React.Component {
   constructor() {
     super();
+    this.sortAndUpdate = this.sortAndUpdate.bind(this)    // TO AVOID PROBLEMS WITH 'THIS' IN REMOVE LISTENER
 
     this.state = {
       profiles: sort(ProfilesStore.getAll())
@@ -15,7 +16,11 @@ class TableProfiles extends React.Component {
   }
 
   componentWillMount() {
-    ProfilesStore.on("profilesUpdate", this.sortAndUpdate.bind(this))
+    ProfilesStore.on("profilesUpdate", this.sortAndUpdate)
+  }
+
+  componentWillUnmount() {
+    ProfilesStore.removeListener("profilesUpdate", this.sortAndUpdate);
   }
 
   sortAndUpdate() {

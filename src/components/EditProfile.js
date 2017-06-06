@@ -6,8 +6,13 @@ import ProfilesStore from '../stores/ProfilesStore';
 class EditProfile extends React.Component {
   constructor() {
     super();
+    this.updateState = this.updateState.bind(this);     // TO AVOID PROBLEMS WITH 'THIS' IN REMOVE LISTENER
+    this.updateSelected = this.updateSelected.bind(this);
 
-    this.state = this.updateState();
+    this.state = {
+      profiles: ProfilesStore.getAll(),
+      selectedProfile: ProfilesStore.getSelected()
+    }
   }
 
   updateState() {
@@ -16,19 +21,24 @@ class EditProfile extends React.Component {
       selectedProfile: ProfilesStore.getSelected()
     }
 
-    return { ...newState };
+    this.setState(newState);
+  }
+
+  updateSelected() {
+    this.setState({ 
+      ...this.state, 
+      selectedProfile: ProfilesStore.getSelected() 
+    });
   }
 
   componentWillMount() {
-    ProfilesStore.on("profilesUpdate", () => {
-      const newState = this.updateState();              // IMMUTABLE
+    ProfilesStore.on("profilesUpdate", this.updateState )    // IMMUTABLE
+    ProfilesStore.on("selectedChange", this.updateSelected )   // IMMUTABLE
+  }
 
-      this.setState(newState)
-    })
-
-    ProfilesStore.on("selectedChange", () => {
-      this.setState({ ...this.state, selectedProfile: ProfilesStore.getSelected() });    // IMMUTABLE
-    })
+  componentWillUnmount() {
+    ProfilesStore.removeListener("profilesUpdate", this.updateState);
+    ProfilesStore.removeListener("selectedChange", this.updateSelected);
   }
 
   render() {
