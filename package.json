@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/jest": "^19.2.4",
     "bootstrap": "^4.0.0-alpha.6",
     "flux": "^3.1.2",
     "react": "^15.5.4",

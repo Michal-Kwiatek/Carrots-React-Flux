@@ -15,7 +15,7 @@ class ProfilesStore extends EventEmitter {
   }
 
   initialLoadFromStorage() {
-    const profiles = JSON.parse(localStorage.getItem("profiles"));
+    const profiles = JSON.parse(window.localStorage.getItem("profiles"));
 
     return profiles || [];                                  /// IF PROFILES ARE NOT FOUND IN LOCALSTORAGE RETURN EMPTY ARRAY
   }
@@ -23,7 +23,7 @@ class ProfilesStore extends EventEmitter {
   saveToLocalStorage() {
     const profiles = JSON.stringify(this.profiles)
 
-    localStorage.setItem("profiles", profiles);
+    window.localStorage.setItem("profiles", profiles);
   }
 
   createProfile(name, carrotsCount) {

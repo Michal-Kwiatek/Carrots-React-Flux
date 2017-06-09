@@ -15,7 +15,8 @@ class ValidationStore extends EventEmitter {
     let nameValid = this.validateName(data.rabbitName);
     let countValid = this.validateCount(data.carrotsCount);
 
-    this.changeState(nameValid && countValid) 
+    this.formValid = nameValid && countValid;
+    this.emit("stateChange");
   }
 
   validateName(name) {
@@ -28,11 +29,6 @@ class ValidationStore extends EventEmitter {
     return Number.isInteger(val) && val >= 0 && val <= 10000;
   }
 
-  changeState(state) {
-    this.formValid = state;
-
-    this.emit("stateChange");
-  }
 
   /* GETTERS */
   isFormValid() {

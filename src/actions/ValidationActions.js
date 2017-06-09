@@ -8,9 +8,3 @@ export function validateForm(data) {
     })
 }
 
-export function changeState(state) {
-    dispatcher.dispatch({
-        type: "VALIDATE_CHANGE_STATE",
-        state
-    })
-}

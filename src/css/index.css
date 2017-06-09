@@ -28,10 +28,13 @@ a:link, a:active, a:hover, a {
     text-decoration: none;
 }
 
+
+
 /* NAVIGATION */
 .nav {
     max-width: 385px;
     display: flex;
+    align-items: center;
     justify-content: space-around;
     margin-bottom: 25px;
     margin-left: auto;
@@ -53,11 +56,14 @@ a:link, a:active, a:hover, a {
     color: inherit;
 }
 
+
 .active {
+    margin-top: 0;
+    padding: 7px;
+    height: 100%;
     display: block;
     color: #FFFFFF;
     border-radius: 5px;
-    height: 100%;
 }
 
 .navNew.active {
@@ -67,6 +73,8 @@ a:link, a:active, a:hover, a {
 .navEdit.active {
     background-color: #75CAEB;
 }
+
+
 
 /* CREATE */
 .createProfile {

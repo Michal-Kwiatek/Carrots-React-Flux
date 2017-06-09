@@ -15,7 +15,7 @@ function fillTable(count) {
 }
 
 
-describe('Sorting by Counting', () => {
+describe('Sorting by counting', () => {
   var elementsCount = 20000,  
       elements = fillTable(elementsCount),
       sorted;
@@ -33,6 +33,7 @@ describe('Sorting by Counting', () => {
     var endTime = new Date().getTime();
     var elapsedTime = (endTime-startTime) / 1000;
 
+    console.info('Sorting time', elapsedTime+'s')
     expect(elapsedTime).toBeLessThan(10);
   });
 
