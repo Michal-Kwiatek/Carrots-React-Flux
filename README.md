@@ -1,4 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This is ported [Angular app](https://github.com/mkwiatek/Carrots-Admin-Panel) with some improvements made while learning Reactjs and Flux.
 
 ## Available Scripts
 
@@ -15,7 +16,7 @@ You will also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](#running-tests) for more information.
+
 
 ### `npm run build`
 
@@ -25,4 +26,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-See the section about [deployment](#deployment) for more information.
