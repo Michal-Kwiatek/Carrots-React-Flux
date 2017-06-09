@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). <br>
 This is ported [Angular app](https://github.com/mkwiatek/Carrots-Admin-Panel) with some improvements made while learning Reactjs and Flux.
 
 ## Available Scripts
